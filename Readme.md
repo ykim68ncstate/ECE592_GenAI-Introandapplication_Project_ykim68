@@ -23,21 +23,25 @@ This helps building operators and researchers understand system performance with
 - Prompt-based LLM diagnosis
 - Metric-based evaluation
 
----
 
-### (1) Code Organization
+### (1) Repo Organization
 Final/
-├── data/ # BAS dataset (time-series HVAC data)
+
 ├── results/ # Generated outputs and evaluation results
-├── notebooks/ # Main implementation notebook
-├── src/ # (optional) modular scripts
-└── report/ # Final report (NeurIPS format)
+
+├── ykim68_Project_Final.ipynb / # Main implementation notebook
+
+└── ykim68_final_report/ # Final report (NeurIPS format)
+
 
 Milestone/
+
 ├── code/ # Initial implementation
+
 └── report/ # Milestone report
 
 Dataset.zip # Raw BAS dataset
+
 README.md
 
 ---
