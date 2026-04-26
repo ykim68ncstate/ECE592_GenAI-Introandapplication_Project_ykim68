@@ -53,17 +53,6 @@ to evaluate how prompt engineering affects reliability and usefulness.
 
 ---
 
-## Repository Structure
-├── Dataset/
-├── Final/
-│ ├── report/
-│ ├── results/
-│ └── (code files)
-├── Milestone/
-│ ├── report/
-│ ├── code/
-
-
 ## Dataset
 
 ### `Dataset.zip`
