@@ -18,28 +18,54 @@ The goal of this project is to:
 
 This helps building operators and researchers understand system performance without requiring deep HVAC expertise.
 
+The final output is a structured diagnostic report including:
+- operational summary  
+- efficiency assessment  
+- key issues  
+- engineering interpretation  
+- recommendations  
+
+---
 
 ## What This System Does
 
-This system takes HVAC time-series data as input and performs:
+Given HVAC time-series data, the system performs:
 
-1. Physics-based feature computation  
-2. Rule-based system evaluation  
-3. LLM-based diagnostic report generation  
-4. Performance evaluation of LLM outputs  
+1. **Feature Engineering**  
+   - Computes physics-based features (temperature differences, airflow, cooling load)
 
-The final output is a **structured engineering report** that explains:
-- Current system status
-- Detected issues
-- Physical interpretation
-- Actionable recommendations  
+2. **Rule-Based Evaluation**  
+   - Classifies system status (efficient / needs review / inefficient)
 
+3. **LLM-Based Diagnosis**  
+   Generates structured reports including:
+   - Operational summary
+   - Efficiency assessment
+   - Key issues
+   - Engineering interpretation
+   - Recommendations
+
+4. **Evaluation**  
+   Measures performance using:
+   - Rule Consistency
+   - Hallucination Score
+   - Usefulness Score
+     
 ---
 
 ## LLM Usage
 
-This project uses the **OpenAI API** to generate diagnostic reports.
+This project uses the OpenAI API for LLM-based report generation.
 
+Set your API key before running the code:
+```bash
+export OPENAI_API_KEY="your_api_key_here"
+or inside the notebook:
+  ₩import os₩
+  ₩os.environ["OPENAI_API_KEY"] = "your_api_key_here"₩
+
+For convenience in this project (e.g., notebook execution), you may also directly input the API key in the code.
+  
 - Model: GPT-based LLM (via OpenAI API)
 - Input: Structured HVAC features + rule evaluation results
 - Output: JSON-based diagnostic report
@@ -56,9 +82,12 @@ to evaluate how prompt engineering affects reliability and usefulness.
 ## Dataset
 
 ### `Dataset.zip`
-- Shared dataset for milestone and final stages
-- BAS (Building Automation System) data
-- Includes HVAC time-series variables (temperature, airflow, etc.)
+- Contains BAS (Building Automation System) data
+- Time-series HVAC operational data
+- Includes variables such as:
+  - temperature (SA_T, MA_T, OA_T, RA_T)
+  - airflow (CFM)
+  - system operation conditions
 
 ---
 
