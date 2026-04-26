@@ -1,13 +1,12 @@
 # Physics-Grounded Generative HVAC Diagnosis
 
-This repository contains the implementation and results of an LLM-based HVAC diagnostic framework using BAS data.
-
-The project is organized into **Final** and **Milestone** stages, along with a shared dataset.
-
-
-This project develops an **LLM-based HVAC diagnostic framework** that automatically interprets building operational data from a Building Automation System (BAS).
+This repository contains an LLM-based HVAC diagnostic framework using Building Automation System (BAS) data. The framework integrates physics-based features and rule-based evaluation to generate structured diagnostic reports.
 
 ---
+
+## 1. Project Overview
+
+This project aims to automatically interpret HVAC operational data and generate engineering-level diagnostic reports using a Large Language Model (LLM).
 
 ## Project Objective
 
@@ -18,12 +17,106 @@ The goal of this project is to:
 
 This helps building operators and researchers understand system performance without requiring deep HVAC expertise.
 
-The final output is a structured diagnostic report including:
-- operational summary  
-- efficiency assessment  
-- key issues  
-- engineering interpretation  
-- recommendations  
+### Key Components
+- Physics-based feature generation
+- Rule-based system evaluation
+- Prompt-based LLM diagnosis
+- Metric-based evaluation
+
+---
+
+### (1) Code Organization
+Final/
+├── data/ # BAS dataset (time-series HVAC data)
+├── results/ # Generated outputs and evaluation results
+├── notebooks/ # Main implementation notebook
+├── src/ # (optional) modular scripts
+└── report/ # Final report (NeurIPS format)
+
+Milestone/
+├── code/ # Initial implementation
+└── report/ # Milestone report
+
+Dataset.zip # Raw BAS dataset
+README.md
+
+---
+
+### (2) Installation
+#### Requirements
+- Python 3.9+
+- OpenAI API
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+or
+```bash
+conda env create -f environment.yml
+```
+
+---
+
+## 2. Running Instructions
+
+### Step1. Set API Key
+
+This project uses the OpenAI API for LLM-based report generation.
+
+Set your API key before running the code:
+```bash
+export OPENAI_API_KEY="your_api_key_here"
+```
+or inside the notebook:
+```bash
+import os
+os.environ["OPENAI_API_KEY"] = "your_api_key_here"
+```
+
+For convenience in this project (e.g., notebook execution), you may also directly input the API key in the code.
+  
+- Model: GPT-based LLM (via OpenAI API)
+- Input: Structured HVAC features + rule evaluation results
+- Output: JSON-based diagnostic report
+
+The project compares:
+- **Baseline prompt**
+- **Improved prompt (constraint-based, physics-guided)**
+
+to evaluate how prompt engineering affects reliability and usefulness.
+
+
+### Step2. Run Pipeline
+
+Main steps:
+
+- (1) Data preprocessing
+- (2) Physics-based feature generation
+- (3) Rule-based evaluation
+- (4) LLM report generation
+- (5) Evaluation
+
+Example:
+```bash
+Final/notebooks/main.ipynb
+```
+
+### 5. Step 3: Input and Output
+Input
+- BAS time-series data (CSV)
+- Variables include:
+   - SA_T, MA_T, OA_T, RA_T
+   - SA_CFM, OA_CFM
+
+Output
+LLM Reports: JSON format
+
+Final/results/
+├── ahu_diagnostic_reports_baseline.json
+├── ahu_diagnostic_reports_improved.json
+
 
 ---
 
@@ -51,35 +144,6 @@ Given HVAC time-series data, the system performs:
    - Hallucination Score
    - Usefulness Score
      
----
-
-## LLM Usage
-
-This project uses the OpenAI API for LLM-based report generation.
-
-Set your API key before running the code:
-```bash
-export OPENAI_API_KEY="your_api_key_here"
-```
-or inside the notebook:
-```bash
-import os
-os.environ["OPENAI_API_KEY"] = "your_api_key_here"
-```
-
-For convenience in this project (e.g., notebook execution), you may also directly input the API key in the code.
-  
-- Model: GPT-based LLM (via OpenAI API)
-- Input: Structured HVAC features + rule evaluation results
-- Output: JSON-based diagnostic report
-
-The project compares:
-- **Baseline prompt**
-- **Improved prompt (constraint-based, physics-guided)**
-
-to evaluate how prompt engineering affects reliability and usefulness.
-
-
 ---
 
 ## Dataset
