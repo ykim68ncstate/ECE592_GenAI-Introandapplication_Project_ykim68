@@ -60,9 +60,12 @@ This project uses the OpenAI API for LLM-based report generation.
 Set your API key before running the code:
 ```bash
 export OPENAI_API_KEY="your_api_key_here"
+```
 or inside the notebook:
-  ₩import os₩
-  ₩os.environ["OPENAI_API_KEY"] = "your_api_key_here"₩
+```bash
+import os
+os.environ["OPENAI_API_KEY"] = "your_api_key_here"
+```
 
 For convenience in this project (e.g., notebook execution), you may also directly input the API key in the code.
   
@@ -80,6 +83,7 @@ to evaluate how prompt engineering affects reliability and usefulness.
 ---
 
 ## Dataset
+- Used for both Milestone and Final stages
 
 ### `Dataset.zip`
 - Contains BAS (Building Automation System) data
@@ -97,7 +101,7 @@ to evaluate how prompt engineering affects reliability and usefulness.
 - Final report (NeurIPS format)
 - Includes methodology, results, and analysis
 
-### `Final/ (code files)`
+### Final code file
 Includes:
 - Data preprocessing
 - Compute physics-based features  
@@ -121,9 +125,9 @@ Contains model outputs and evaluation results:
 
 ## Milestone
 
-### `Report`
+### Report
 - Milestone report
 
-### `Milestone/code/`
+### Milestone code file
 - Initial implementation and baseline experiments
 
