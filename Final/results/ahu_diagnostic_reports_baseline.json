@@ -1,0 +1,88 @@
+[
+  {
+    "timestamp": "2024-11-01 23:00:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.92,
+      "supply_air_temp_f": 54.89,
+      "return_air_temp_f": 71.49,
+      "outdoor_air_temp_f": 65.86,
+      "supply_airflow_cfm": 14409.62,
+      "outdoor_airflow_cfm": 5297.5,
+      "outdoor_air_fraction": 0.368,
+      "cooling_load_kw_thermal": 68.52,
+      "fan_power_kw_est": 4.85
+    },
+    "rule_evaluation": {
+      "efficiency_status": "efficient",
+      "violation_count": 0,
+      "violations": []
+    },
+    "llm_mode": "baseline",
+    "llm_report": {
+      "operational_summary": "Cooling mode at night with stable control. Supply air at 54.9°F from mixed air at 69.9°F (≈15.0°F coil drop) meets a typical 55°F SAT target. Airflow ~14,410 cfm with ~37% outdoor air (≈5,300 cfm). Economizer is active (OA 65.9°F < RA 71.5°F), reducing coil load.",
+      "efficiency_assessment": "Overall operation is efficient with no rule violations. Fan power ≈4.85 kW yields ~0.34 W/cfm (good). Economizer lowers entering air temperature and reduces sensible cooling demand by ~9–10% versus all-return conditions.",
+      "key_issues": "No faults detected. Temperatures and flows are physically consistent; minor mixed-air deviation (~0.5°F from blend calc) is within typical sensor tolerance.",
+      "engineering_interpretation": "Sensible coil load ≈68.5 kW_th (~19.5 tons) from 1.08×14,410 cfm×15.0°F ≈ 234 kBTU/h. Outdoor air fraction 0.368 (≈5,298/14,410 cfm) aligns with measured flows. Mixed air is ~1.6°F below return, consistent with economizer effect. Without economizer, required sensible load would be ≈75.7 kW_th, so savings are ≈7.2 kW_th (~9–10%). Fan intensity ≈0.34 W/cfm indicates efficient airside performance.",
+      "recommendation": "Maintain current settings and economizer operation while outdoor enthalpy/humidity remain favorable. Optionally increase OA fraction to further reduce compressor load if humidity and pressurization constraints allow; verify damper tracking and temperature sensor calibration during routine maintenance."
+    }
+  },
+  {
+    "timestamp": "2024-11-01 23:15:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.87,
+      "supply_air_temp_f": 55.08,
+      "return_air_temp_f": 71.46,
+      "outdoor_air_temp_f": 65.88,
+      "supply_airflow_cfm": 13864.6,
+      "outdoor_airflow_cfm": 5440.5,
+      "outdoor_air_fraction": 0.392,
+      "cooling_load_kw_thermal": 64.91,
+      "fan_power_kw_est": 4.57
+    },
+    "rule_evaluation": {
+      "efficiency_status": "efficient",
+      "violation_count": 0,
+      "violations": []
+    },
+    "llm_mode": "baseline",
+    "llm_report": {
+      "operational_summary": "Cooling mode. Supply air 55.1°F, return 71.5°F (ΔT ≈ 16.4°F). Mixed air 69.9°F from ~39% outdoor air at 65.9°F. Supply airflow ~13,865 cfm. Coil sensible load ≈ 64.9 kW_th; fan power ≈ 4.57 kW.",
+      "efficiency_assessment": "Overall operation appears efficient. Fan efficiency ≈ 0.33 W/cfm (strong). Coil ΔT and airflows align with the reported 64.9 kW_th load. Economizer bringing in ~39% OA while OA is cooler than return; this is directionally efficient and may allow further reduction of mechanical cooling if conditions permit.",
+      "key_issues": "No faults detected. 0 rule violations.",
+      "engineering_interpretation": "Mixed-air blending check: expected Tmix ≈ 0.392×65.9 + 0.608×71.5 ≈ 69.3°F vs measured 69.9°F (≈0.6°F difference, within sensor tolerance). Sensible capacity check: Q ≈ 1.08×13,865 cfm×(69.9−55.1)°F ≈ 221,000 Btu/h ≈ 64.9 kW_th, consistent with reported load. Supply fan power per airflow ≈ 0.33 W/cfm, indicative of efficient operation. With OA (65.9°F) < return (71.5°F), additional economizer opening could lower mixed-air temperature and reduce coil load, subject to humidity/enthalpy limits.",
+      "recommendation": "Maintain current operation; no corrective action needed. If outdoor air humidity/enthalpy and indoor pressurization allow, consider increasing economizer OA fraction to further cut mechanical cooling (potential reduction on the order of ~18 kW_th if driven toward full OA under similar conditions). Continue trending SAT stability and fan kW/cfm to verify sustained performance."
+    }
+  },
+  {
+    "timestamp": "2024-11-01 23:30:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.82,
+      "supply_air_temp_f": 55.03,
+      "return_air_temp_f": 71.49,
+      "outdoor_air_temp_f": 65.86,
+      "supply_airflow_cfm": 13197.99,
+      "outdoor_airflow_cfm": 3796.0,
+      "outdoor_air_fraction": 0.288,
+      "cooling_load_kw_thermal": 61.79,
+      "fan_power_kw_est": 3.89
+    },
+    "rule_evaluation": {
+      "efficiency_status": "needs review",
+      "violation_count": 1,
+      "violations": [
+        "Missed economizer opportunity"
+      ]
+    },
+    "llm_mode": "baseline",
+    "llm_report": {
+      "operational_summary": "At 23:30 in cooling mode, the unit is meeting a 55.0°F SAT with ~13,198 cfm supply. OAT 65.9°F is below RAT 71.5°F. Mixed air is 69.8°F with ~29% OA (~3,796 cfm). Thermal cooling load ≈ 61.8 kW_th; fan power ≈ 3.9 kW. A rule flagged a missed economizer opportunity.",
+      "efficiency_assessment": "With OAT < RAT and above the 55°F SAT target, the economizer should be driven toward maximum OA to offload mechanical cooling. Increasing OA from ~29% toward the allowable maximum is estimated to cut coil load by ~16–17 kW_th (~27%). Depending on cooling efficiency (COP ~3–5), this equates to roughly 3–6 kW electric savings while holding SAT. Current status: needs review due to underused free cooling.",
+      "key_issues": "Economizer not maximizing OA when conditions are favorable; OA fraction capped near 29%. Potential causes: damper/actuator stuck or limited; economizer disabled or mis-sequenced; overly high minimum OA setpoint; insufficient building relief/return pressure control; or conservative humidity/enthalpy lockout. Rule violation present: Missed economizer opportunity.",
+      "engineering_interpretation": "Present coil sensible load ≈ 1.08*13198 cfm*(69.82–55.03) ≈ 210,800 Btu/h ≈ 61.8 kW_th (matches reported). If OA were 100% (mixed air ≈ OAT = 65.86°F), coil ΔT ≈ 10.83°F ⇒ ≈ 154,400 Btu/h ≈ 45.2 kW_th. Expected reduction ≈ 16.6 kW_th (~27%). Measured mixed air (69.8°F) equals the weighted average of OAT and RAT at OA fraction 0.288, supporting sensor plausibility and indicating the economizer is not at maximum.",
+      "recommendation": "Enable and test economizer cooling now: command OA damper to maximum and verify full stroke and feedback; sequence to use OA up to the SAT limit, then add mechanical. Review economizer enable/lockouts (enthalpy/humidity, low SAT/coil freeze, occupancy/schedule) and relax if overly conservative. Calibrate OAT/RAT/MAT and verify OA airflow measurement. Inspect damper/linkage/actuator and confirm adequate building relief to avoid over-pressurization at high OA. Trend SAT, MAT, OAT, OA fraction, and mechanical cooling for 1–2 days; target OA fraction well above 0.29 during cool outdoor periods while maintaining the 55°F SAT."
+    }
+  }
+]

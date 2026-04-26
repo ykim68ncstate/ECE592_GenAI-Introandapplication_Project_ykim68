@@ -1,0 +1,115 @@
+[
+  {
+    "timestamp": "2024-11-01 23:00:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.92,
+      "supply_air_temp_f": 54.89,
+      "return_air_temp_f": 71.49,
+      "outdoor_air_temp_f": 65.86,
+      "supply_airflow_cfm": 14409.62,
+      "outdoor_airflow_cfm": 5297.5,
+      "outdoor_air_fraction": 0.368,
+      "cooling_load_kw_thermal": 68.52,
+      "fan_power_kw_est": 4.85
+    },
+    "rule_evaluation": {
+      "efficiency_status": "efficient",
+      "violation_count": 0,
+      "violations": []
+    },
+    "llm_mode": "improved",
+    "llm_report": {
+      "operational_summary": "AHU is in cooling mode delivering ~14,410 cfm at 54.9°F, with mixed air 69.9°F from 36.8% outdoor air (65.9°F) and return air 71.5°F. Coil provides ~15°F drop (~68.5 kW_th), fan power ~4.85 kW.",
+      "efficiency_assessment": "Overall efficient (0 rule violations). Physics cross-check aligns: 1.08×cfm×ΔT ≈ 68.6 kW_th matches reported 68.5 kW_th; fan intensity ~0.34 W/cfm indicates low distribution energy, and OAT<RAT supports effective pre-cooling.",
+      "key_issues": "No issues detected. Potential optimization: with OAT below RAT, increasing OA (within humidity and minimum-ventilation limits) could further reduce coil load, though SAT 55°F still requires mechanical cooling.",
+      "engineering_interpretation": "Mixed-air calculation using 36.8% OA predicts ~69.4°F, within ~0.5°F of measured MAT, indicating coherent airflow/temperature measurements. Since OAT (65.9°F) > SAT (54.9°F), economizer alone cannot meet setpoint, but more OA would lower MAT toward 65.9°F and reduce coil ΔT by roughly a quarter if constraints allow.",
+      "recommendation": "Maintain current operation; continue to monitor economizer control to maximize pre-cooling during mild conditions while observing humidity and minimum-OA requirements. Re-verify OA fraction and temperature readings during tune-ups given current values are self-consistent.",
+      "evidence_used": [
+        "mode: cooling",
+        "OAT 65.86°F, RAT 71.49°F, MAT 69.92°F",
+        "Supply air temperature 54.89°F",
+        "Supply airflow 14,409.62 cfm; OA flow 5,297.5 cfm; OA fraction 0.368",
+        "Cooling load 68.52 kW_th ≈ 1.08 × cfm × ΔT",
+        "Fan power 4.85 kW (~0.34 W/cfm)",
+        "efficiency_status: efficient; violation_count: 0"
+      ]
+    }
+  },
+  {
+    "timestamp": "2024-11-01 23:15:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.87,
+      "supply_air_temp_f": 55.08,
+      "return_air_temp_f": 71.46,
+      "outdoor_air_temp_f": 65.88,
+      "supply_airflow_cfm": 13864.6,
+      "outdoor_airflow_cfm": 5440.5,
+      "outdoor_air_fraction": 0.392,
+      "cooling_load_kw_thermal": 64.91,
+      "fan_power_kw_est": 4.57
+    },
+    "rule_evaluation": {
+      "efficiency_status": "efficient",
+      "violation_count": 0,
+      "violations": []
+    },
+    "llm_mode": "improved",
+    "llm_report": {
+      "operational_summary": "AHU is in cooling, delivering 13.9 kcfm at 55.1°F and removing ~64.9 kW sensible load (coil ΔT ~14.8°F from MAT 69.9°F). Outdoor air fraction is 39% (≈5.44 kcfm), and MAT aligns with mixing of 71.5°F return and 65.9°F outdoor air; fan draws ~4.6 kW.",
+      "efficiency_assessment": "Overall operation is efficient (0 rule violations). Physics cross-check confirms 1.08×CFM×ΔT ≈ 64.9 kW and fan intensity ~0.33 W/cfm, both indicative of good performance.",
+      "key_issues": "No faults flagged. Minor opportunity: OAT is below RAT; increased economizer use could trim coil load (roughly up to 17 kW) if humidity and building pressurization allow.",
+      "engineering_interpretation": "Mixed-air temperature sits correctly between OAT and RAT and matches the reported 39% OA fraction, supporting damper/sensor plausibility. With OAT ~65.9°F, even 100% OA would yield MAT ~66°F, so mechanical cooling is still needed to reach 55°F SAT; partial economizing is reasonable. Stable coil ΔT and SAT indicate controlled operation.",
+      "recommendation": "Maintain current control settings and monitor the economizer to opportunistically increase OA when outdoor conditions permit while maintaining humidity/pressure targets. Continue maintaining filtration and fan setup to sustain ~0.33 W/cfm performance.",
+      "evidence_used": [
+        "mode: cooling",
+        "supply_airflow_cfm: 13864.6 and supply_air_temp_f: 55.08",
+        "cooling_load_kw_thermal: 64.91 and ΔT (mixed_air_temp_f 69.87 → supply_air_temp_f 55.08)",
+        "outdoor_air_fraction: 0.392 and outdoor_airflow_cfm: 5440.5",
+        "return_air_temp_f: 71.46 and outdoor_air_temp_f: 65.88 vs mixed_air_temp_f: 69.87",
+        "fan_power_kw_est: 4.57 (~0.33 W/cfm)",
+        "efficiency_status: efficient and violation_count: 0"
+      ]
+    }
+  },
+  {
+    "timestamp": "2024-11-01 23:30:00",
+    "mode": "cooling",
+    "physics_features": {
+      "mixed_air_temp_f": 69.82,
+      "supply_air_temp_f": 55.03,
+      "return_air_temp_f": 71.49,
+      "outdoor_air_temp_f": 65.86,
+      "supply_airflow_cfm": 13197.99,
+      "outdoor_airflow_cfm": 3796.0,
+      "outdoor_air_fraction": 0.288,
+      "cooling_load_kw_thermal": 61.79,
+      "fan_power_kw_est": 3.89
+    },
+    "rule_evaluation": {
+      "efficiency_status": "needs review",
+      "violation_count": 1,
+      "violations": [
+        "Missed economizer opportunity"
+      ]
+    },
+    "llm_mode": "improved",
+    "llm_report": {
+      "operational_summary": "AHU is in cooling mode, delivering 55.0°F supply from 69.8°F mixed air at ~13,198 cfm. Outdoor air is ~28.8% while outdoor air (65.9°F) is cooler than return (71.5°F), and the coil is providing ~61.8 kW-thermal.",
+      "efficiency_assessment": "Needs review: cooler outdoor air was not leveraged to pre-cool mixed air, increasing mechanical cooling load. Fan power (3.9 kW) is modest; the primary inefficiency is economizer utilization.",
+      "key_issues": "Missed economizer opportunity: OAT (65.9°F) < MAT (69.8°F) < RAT (71.5°F) but OA fraction remained ~29%, keeping MAT elevated and increasing coil delta-T. Economizer logic or damper positioning did not ramp OA toward available free cooling.",
+      "engineering_interpretation": "Current sensible coil load ≈ 61.8 kW-thermal (consistent with 1.08×13,198 cfm×14.79°F and the reported 61.79). Raising OA toward 100% would pull MAT toward 65.9°F, reducing coil ΔT by ~3.96°F and saving ~16.5 kW-thermal (~27%); SAT 55°F would still need some mechanical cooling.",
+      "recommendation": "Review and tune economizer enable/high-limit settings and sequence so OA increases when OAT < RAT in cooling. Functionally test OA dampers (command to high OA and verify response) and, if capable, allow higher OA during similar conditions; trend OAT/MAT/SAT to confirm pre-cooling and reduced coil load.",
+      "evidence_used": [
+        "Cooling mode at 2024-11-01 23:30",
+        "OAT 65.86°F, RAT 71.49°F, MAT 69.82°F (OAT < MAT < RAT)",
+        "Outdoor airflow 3,796 cfm of 13,198 cfm (OA fraction 0.288)",
+        "Supply air temperature 55.03°F, coil ΔT ≈ 14.79°F",
+        "Calculated sensible load ≈ 61.8 kW-thermal; reported 61.79 kW-thermal",
+        "Fan power ≈ 3.89 kW",
+        "Rule violation: Missed economizer opportunity"
+      ]
+    }
+  }
+]
